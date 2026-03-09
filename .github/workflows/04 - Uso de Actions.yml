@@ -1,6 +1,6 @@
 name: 04 - Uso de Actions
-on:
-  push:
+on: 
+  workflow_dispatch:
 jobs:
   build:
   ubuntu-echo:
@@ -8,7 +8,14 @@ jobs:
     steps:
     - name: "Checkout Code"
       uses: actions/checkout@v4
-  
-    - name: "Printing Folders"
-      run: |
-        tree -d
+      with:
+        node-version: '24.x'
+
+    - name: "Install Dependencies"
+      working-directory: ./my-app
+      run: npm ci
+
+    - name: "Run Tests"    
+      working-directory: ./my-app
+      run: 
+         npm run test
