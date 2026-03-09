@@ -2,12 +2,14 @@ name: 04 - Uso de Actions
 on: 
   workflow_dispatch:
 jobs:
-  build:
   ubuntu-echo:
-     runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: "Checkout Code"
       uses: actions/checkout@v4
+
+    - name: "Setup Node.js"
+      uses: actions/setup-node@v4
       with:
         node-version: '24.x'
 
@@ -17,5 +19,4 @@ jobs:
 
     - name: "Run Tests"    
       working-directory: ./my-app
-      run: 
-         npm run test
+      run: npm run test
