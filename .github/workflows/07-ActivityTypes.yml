@@ -1,0 +1,19 @@
+name: 07-ActivityTypes
+on: 
+    push:
+        branches:
+            - main
+    pull_request:
+        types: [opened, synchronize]
+        branches:
+            - develop
+    workflow_dispatch:
+jobs:
+  echo:
+     runs-on: ubuntu-latest
+     steps:
+       - name: 'Echo Message'
+         run: echo 'Workflow triggered by filters or activity types'  
+  
+            
+ 
