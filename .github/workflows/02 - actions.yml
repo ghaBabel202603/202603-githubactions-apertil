@@ -1,0 +1,14 @@
+name: 02 - Actions 
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '13 0 * * *' # Ejecutar diariamente a medianoche  
+  workflow_dispatch: # Permitir ejecución manual desde la interfaz de GitHub     
+jobs:
+  ubuntu-echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ShowTrigger
+        run: |
+          echo Event name: ${{ github.event_name }}
